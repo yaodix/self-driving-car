@@ -60,7 +60,8 @@ def compute_lane_from_candidates(line_candidates, img_shape):
     :param img_shape: shape of image to which hough transform was applied
     :return: lines that approximate left and right lane position
     """
-
+    # show for debugging
+    
     # separate candidate lines according to their slope
     pos_lines = [l for l in line_candidates if l.slope > 0]
     neg_lines = [l for l in line_candidates if l.slope < 0]
@@ -121,6 +122,10 @@ def get_lane_lines(color_image, solid_lines=True):
                 # consider only lines with slope between 30 and 60 degrees
                 if 0.5 <= np.abs(line.slope) <= 2:
                     candidate_lines.append(line)
+                    line.draw(color_image, [0,0,255], 3)
+                else:
+                    line.draw(color_image, [0,255,0], 3)
+                    
         # interpolate lines candidates to find both lanes
         lane_lines = compute_lane_from_candidates(candidate_lines, img_gray.shape)
     else:

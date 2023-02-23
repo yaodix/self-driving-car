@@ -34,4 +34,4 @@ class Line:
         self.y2 = y2
 
     def draw(self, img, color=[255, 0, 0], thickness=10):
-        cv2.line(img, (self.x1, self.y1), (self.x2, self.y2), color, thickness)
+        cv2.line(img, (int(self.x1), int(self.y1)), (int(self.x2), int(self.y2)), color, thickness)
